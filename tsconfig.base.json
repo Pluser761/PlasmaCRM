@@ -14,7 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@plasma-crm/tmp-lib1": ["libs/shared/tmp-lib1/src/index.ts"],
+      "@plasma-crm/models": ["packages/shared/src/index.ts"],
+      "@plasma-crm/index": [
+        "apps/frontend/src/app/layouts/default/index/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

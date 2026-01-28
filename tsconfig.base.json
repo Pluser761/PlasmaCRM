@@ -19,7 +19,8 @@
       "@plasma-crm/models": ["packages/shared/src/index.ts"],
       "@plasma-crm/index": [
         "apps/frontend/src/app/layouts/default/index/src/index.ts"
-      ]
+      ],
+      "@plasma-crm/shared-types": ["libs/shared/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

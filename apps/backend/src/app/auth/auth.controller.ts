@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Post, UseGuards, Request } from '@nestjs/common';
-import { AuthService, JwtKeys } from './auth.service';
-import { User } from '../user/user.service';
+import { AuthService } from './auth.service';
+import { User, JwtKeys } from '@plasma-crm/shared-types';
 import { AuthGuard } from './auth.guard';
 
 @Controller('auth')

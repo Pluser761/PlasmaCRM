@@ -1,14 +1,9 @@
-import { Injectable, Inject, UnauthorizedException, NotFoundException } from '@nestjs/common';
-import { User, UserService } from '../user/user.service';
+import { Injectable, Inject, UnauthorizedException } from '@nestjs/common';
+import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { randomUUID } from 'crypto';
 import { jwtConstants } from './constants';
-
-
-export type JwtKeys = {
-  'access_token': string;
-  'refresh_token': string;
-}
+import { User, JwtKeys } from '@plasma-crm/shared-types';
 
 type Token = {
   token_type: 'refresh' | 'access';

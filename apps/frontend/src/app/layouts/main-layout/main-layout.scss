@@ -254,24 +254,6 @@
   }
 }
 
-// Dark mode support (optional)
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sidebar-bg: #1f2937;
-    --sidebar-border: #374151;
-    --header-bg: #1f2937;
-    --header-border: #374151;
-    --text-primary: #f9fafb;
-    --text-secondary: #d1d5db;
-    --hover-bg: #374151;
-    --active-bg: #1e3a8a;
-  }
-
-  .main-content {
-    background-color: #111827;
-  }
-}
-
 // Print styles
 @media print {
   .sidebar,

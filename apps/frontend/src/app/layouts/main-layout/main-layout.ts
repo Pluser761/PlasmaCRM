@@ -15,7 +15,7 @@ import { ClickOutsideDirective } from '../../shared/directives/click-outside.dir
   styleUrl: './main-layout.scss',
 })
 export class MainLayout {
-  isSidebarCollapsed = false;
+  isSidebarCollapsed = true;
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;

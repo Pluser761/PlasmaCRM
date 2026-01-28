@@ -1,99 +1,149 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Customer } from '@plasma-crm/shared-types';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
+import { DataTableComponent, TableColumn, TableAction } from '../../shared/components/data-table/data-table';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customers',
-  imports: [],
+  imports: [CommonModule, PageHeaderComponent, DataTableComponent],
   template: `
-    <div class="page-header">
-      <h2>Customers</h2>
-      <p>Manage your customer relationships</p>
-    </div>
+    <app-page-header
+      title="Customers"
+      description="Manage your customer relationships and track interactions"
+      createButtonText="Add Customer"
+      createButtonIcon="👥"
+      (createClick)="onCreateCustomer()"
+    ></app-page-header>
 
     <div class="page-content">
-      <div class="placeholder-content">
-        <h3>Customer Management</h3>
-        <p>This is where you'll manage your customers, view their profiles, and track interactions.</p>
-        <div class="placeholder-actions">
-          <button class="btn btn-primary">Add New Customer</button>
-          <button class="btn btn-secondary">Import Customers</button>
-        </div>
-      </div>
+      <app-data-table
+        [data]="customers"
+        [columns]="customerColumns"
+        [actions]="customerActions"
+        emptyMessage="No customers found"
+      ></app-data-table>
     </div>
   `,
   styles: [`
-    .page-header {
-      margin-bottom: 2rem;
-
-      h2 {
-        margin: 0 0 0.5rem 0;
-        color: var(--text-primary);
-        font-size: 1.875rem;
-        font-weight: 700;
-      }
-
-      p {
-        margin: 0;
-        color: var(--text-secondary);
-      }
-    }
-
     .page-content {
       background: white;
       border-radius: 0.5rem;
       padding: 2rem;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     }
-
-    .placeholder-content {
-      text-align: center;
-
-      h3 {
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-      }
-
-      p {
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
-    .placeholder-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.375rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-
-      &.btn-primary {
-        background-color: var(--primary-color);
-        color: white;
-
-        &:hover {
-          background-color: var(--primary-dark);
-        }
-      }
-
-      &.btn-secondary {
-        background-color: #f3f4f6;
-        color: var(--text-primary);
-
-        &:hover {
-          background-color: #e5e7eb;
-        }
-      }
-    }
   `]
 })
-export default class Customers {}
+export default class Customers implements OnInit {
+  private http = inject(HttpClient);
+
+  customers: Customer[] = [];
+  loading = false;
+
+  customerColumns: TableColumn<Customer>[] = [
+    {
+      key: 'name',
+      label: 'Name',
+    },
+    {
+      key: 'email',
+      label: 'Email',
+    },
+    {
+      key: 'phone',
+      label: 'Phone',
+    },
+    {
+      key: 'city',
+      label: 'City',
+    },
+    {
+      key: 'country',
+      label: 'Country',
+    },
+    {
+      key: 'createdAt',
+      label: 'Created',
+      format: (value: Date) => new Date(value).toLocaleDateString(),
+    },
+  ];
+
+  customerActions: TableAction<Customer>[] = [
+    {
+      label: 'Edit',
+      class: 'btn btn-outline',
+      action: (customer) => this.onEditCustomer(customer),
+    },
+    {
+      label: 'Delete',
+      class: 'btn btn-secondary',
+      action: (customer) => this.onDeleteCustomer(customer),
+    },
+  ];
+
+  ngOnInit(): void {
+    this.loadCustomers();
+  }
+
+  loadCustomers(): void {
+    this.loading = true;
+    this.http.get<Customer[]>('/api/customers').subscribe({
+      next: (customers) => {
+        this.customers = customers;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading customers:', error);
+        this.loading = false;
+        // For now, show mock data if API fails
+        this.loadMockData();
+      }
+    });
+  }
+
+  loadMockData(): void {
+    this.customers = [
+      {
+        id: 1,
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        phone: '+1-555-0123',
+        address: '123 Main St',
+        city: 'New York',
+        country: 'USA',
+        createdAt: new Date('2024-01-15'),
+        updatedAt: new Date('2024-01-15'),
+      },
+      {
+        id: 2,
+        name: 'Jane Smith',
+        email: 'jane.smith@example.com',
+        phone: '+1-555-0456',
+        address: '456 Oak Ave',
+        city: 'Los Angeles',
+        country: 'USA',
+        createdAt: new Date('2024-01-20'),
+        updatedAt: new Date('2024-01-20'),
+      },
+    ];
+  }
+
+  onCreateCustomer(): void {
+    console.log('Create new customer');
+    // TODO: Open create customer modal/form
+  }
+
+  onEditCustomer(customer: Customer): void {
+    console.log('Edit customer:', customer);
+    // TODO: Open edit customer modal/form
+  }
+
+  onDeleteCustomer(customer: Customer): void {
+    if (confirm(`Are you sure you want to delete ${customer.name}?`)) {
+      console.log('Delete customer:', customer);
+      // TODO: Call delete API
+    }
+  }
+
+}

@@ -1,41 +1,29 @@
 import { Component } from '@angular/core';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 
 @Component({
   selector: 'app-reports',
-  imports: [],
+  imports: [PageHeaderComponent],
   template: `
-    <div class="page-header">
-      <h2>Reports</h2>
-      <p>Analytics and business insights</p>
-    </div>
+    <app-page-header
+      title="Reports"
+      description="Analytics and business insights"
+      createButtonText="Generate Report"
+      createButtonIcon="📊"
+      (createClick)="onGenerateReport()"
+    ></app-page-header>
 
     <div class="page-content">
       <div class="placeholder-content">
         <h3>Business Analytics</h3>
         <p>Generate reports on sales performance, customer behavior, inventory levels, and business metrics.</p>
         <div class="placeholder-actions">
-          <button class="btn btn-primary">Generate Report</button>
-          <button class="btn btn-secondary">View Dashboard</button>
+          <button class="btn btn-secondary" (click)="onViewDashboard()">View Dashboard</button>
         </div>
       </div>
     </div>
   `,
   styles: [`
-    .page-header {
-      margin-bottom: 2rem;
-
-      h2 {
-        margin: 0 0 0.5rem 0;
-        color: var(--text-primary);
-        font-size: 1.875rem;
-        font-weight: 700;
-      }
-
-      p {
-        margin: 0;
-        color: var(--text-secondary);
-      }
-    }
 
     .page-content {
       background: white;
@@ -96,4 +84,14 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export default class Reports {}
+export default class Reports {
+  onGenerateReport(): void {
+    console.log('Generate report');
+    // TODO: Implement report generation
+  }
+
+  onViewDashboard(): void {
+    console.log('View dashboard');
+    // TODO: Navigate to dashboard
+  }
+}

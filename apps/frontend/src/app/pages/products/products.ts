@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 import { DataTableComponent, TableColumn, TableAction } from '../../shared/components/data-table/data-table';
-import { Customer } from '@plasma-crm/shared-types/customer';
 import { Product } from '@plasma-crm/shared-types/product';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +12,6 @@ import { HttpClient } from '@angular/common/http';
     <app-page-header
       title="Products"
       description="Manage your product catalog, pricing, and inventory"
-      createButtonText="Add Product"
       createButtonIcon="📦"
       (createClick)="onCreateProduct()"
     ></app-page-header>

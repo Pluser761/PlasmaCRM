@@ -13,7 +13,7 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: 'dashboard',
-        loadComponent: () => import('./pages/home/home')
+        loadComponent: () => import('./pages/dashboard/dashboard')
       },
       {
         path: 'customers',

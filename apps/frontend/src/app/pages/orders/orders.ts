@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
     <app-page-header
       title="Orders"
       description="Track and manage customer orders"
-      createButtonText="Create Order"
       createButtonIcon="📋"
       (createClick)="onCreateOrder()"
     ></app-page-header>
@@ -173,63 +172,8 @@ export default class Orders implements OnInit {
       error: (error) => {
         console.error('Error loading orders:', error);
         this.loading = false;
-        // For now, show mock data if API fails
-        this.loadMockData();
       }
     });
-  }
-
-  loadMockData(): void {
-    const mockOrders: Order[] = [
-      {
-        id: 1,
-        customerId: 1,
-        customerName: 'John Doe',
-        orderNumber: 'ORD-2024-001',
-        status: 'delivered',
-        items: [
-          {
-            id: 1,
-            productName: 'Laptop Computer',
-            quantity: 1,
-            unitPrice: 1299.99,
-            totalPrice: 1299.99,
-          },
-        ],
-        subtotal: 1299.99,
-        tax: 103.99,
-        total: 1403.98,
-        orderDate: new Date('2024-01-15'),
-        expectedDeliveryDate: new Date('2024-01-22'),
-        createdAt: new Date('2024-01-15'),
-        updatedAt: new Date('2024-01-22'),
-      },
-      {
-        id: 2,
-        customerId: 2,
-        customerName: 'Jane Smith',
-        orderNumber: 'ORD-2024-002',
-        status: 'shipped',
-        items: [
-          {
-            id: 2,
-            productName: 'Office Chair',
-            quantity: 1,
-            unitPrice: 299.99,
-            totalPrice: 299.99,
-          },
-        ],
-        subtotal: 299.99,
-        tax: 24.00,
-        total: 323.99,
-        orderDate: new Date('2024-01-20'),
-        expectedDeliveryDate: new Date('2024-01-27'),
-        createdAt: new Date('2024-01-20'),
-        updatedAt: new Date('2024-01-25'),
-      },
-    ];
-
-    this.orders = mockOrders;
   }
 
   onCreateOrder(): void {

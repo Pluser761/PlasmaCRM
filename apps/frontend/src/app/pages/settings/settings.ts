@@ -1,41 +1,29 @@
 import { Component } from '@angular/core';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 
 @Component({
   selector: 'app-settings',
-  imports: [],
+  imports: [PageHeaderComponent],
   template: `
-    <div class="page-header">
-      <h2>Settings</h2>
-      <p>Configure your CRM preferences</p>
-    </div>
+    <app-page-header
+      title="Settings"
+      description="Configure your CRM preferences"
+      createButtonText="Save Changes"
+      createButtonIcon="⚙️"
+      (createClick)="onSaveSettings()"
+    ></app-page-header>
 
     <div class="page-content">
       <div class="placeholder-content">
         <h3>System Settings</h3>
         <p>Manage user permissions, system preferences, integrations, and application settings.</p>
         <div class="placeholder-actions">
-          <button class="btn btn-primary">System Settings</button>
-          <button class="btn btn-secondary">User Management</button>
+          <button class="btn btn-secondary" (click)="onUserManagement()">User Management</button>
         </div>
       </div>
     </div>
   `,
   styles: [`
-    .page-header {
-      margin-bottom: 2rem;
-
-      h2 {
-        margin: 0 0 0.5rem 0;
-        color: var(--text-primary);
-        font-size: 1.875rem;
-        font-weight: 700;
-      }
-
-      p {
-        margin: 0;
-        color: var(--text-secondary);
-      }
-    }
 
     .page-content {
       background: white;
@@ -96,4 +84,14 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export default class Settings {}
+export default class Settings {
+  onSaveSettings(): void {
+    console.log('Save settings');
+    // TODO: Implement settings save
+  }
+
+  onUserManagement(): void {
+    console.log('User management');
+    // TODO: Navigate to user management
+  }
+}

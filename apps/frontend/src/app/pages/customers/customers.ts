@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
     <app-page-header
       title="Customers"
       description="Manage your customer relationships and track interactions"
-      createButtonText="Add Customer"
       createButtonIcon="👥"
       (createClick)="onCreateCustomer()"
     ></app-page-header>

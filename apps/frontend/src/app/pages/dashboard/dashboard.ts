@@ -1,25 +1,11 @@
 import { Component } from '@angular/core';
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 
 @Component({
-  selector: 'app-home',
-  imports: [],
-  templateUrl: './home.html',
+  selector: 'app-dashboard',
+  imports: [PageHeaderComponent],
+  templateUrl: './dashboard.html',
   styles: [`
-    .page-header {
-      margin-bottom: 2rem;
-
-      h2 {
-        margin: 0 0 0.5rem 0;
-        color: var(--text-primary);
-        font-size: 1.875rem;
-        font-weight: 700;
-      }
-
-      p {
-        margin: 0;
-        color: var(--text-secondary);
-      }
-    }
 
     .dashboard-grid {
       display: grid;
@@ -156,4 +142,4 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export default class Home {}
+export default class Dashboard {}

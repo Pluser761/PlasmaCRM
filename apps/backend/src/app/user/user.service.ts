@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '@plasma-crm/shared-types';
+import { User } from '@plasma-crm/shared-types/auth';
 
 @Injectable()
 export class UserService {

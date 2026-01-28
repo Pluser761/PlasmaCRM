@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Customer } from '@plasma-crm/shared-types';
+import { Customer } from '@plasma-crm/shared-types/customer';
 
 @Injectable()
 export class CustomerService {

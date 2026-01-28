@@ -1,4 +1,9 @@
-import { User, Customer, Order, OrderItem, OrderStatus, JwtKeys, ApiResponse, PaginatedResponse } from './types';
+import { User } from './auth.types';
+import { Customer } from './customer.types';
+import { Order, OrderItem, OrderStatus } from './order.types';
+import { Product } from './product.types';
+import { JwtKeys } from './auth.types';
+import { ApiResponse, PaginatedResponse } from './api.types';
 
 describe('Shared Types', () => {
   describe('User type', () => {
@@ -91,6 +96,28 @@ describe('Shared Types', () => {
 
         expect(order.status).toBe(status);
       });
+    });
+  });
+
+  describe('Product type', () => {
+    it('should create a valid Product object', () => {
+      const product: Product = {
+        id: 1,
+        name: 'Wireless Headphones',
+        description: 'High-quality wireless headphones',
+        price: 199.99,
+        category: 'Electronics',
+        stock: 45,
+        sku: 'WH-001',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+
+      expect(product.id).toBe(1);
+      expect(product.name).toBe('Wireless Headphones');
+      expect(product.price).toBe(199.99);
+      expect(product.category).toBe('Electronics');
+      expect(product.stock).toBe(45);
     });
   });
 

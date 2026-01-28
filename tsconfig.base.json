@@ -20,7 +20,12 @@
       "@plasma-crm/index": [
         "apps/frontend/src/app/layouts/default/index/src/index.ts"
       ],
-      "@plasma-crm/shared-types": ["libs/shared/types/src/index.ts"]
+      "@plasma-crm/shared-types": ["libs/shared/types/src/index.ts"],
+      "@plasma-crm/shared-types/auth": ["libs/shared/types/src/lib/auth.types.ts"],
+      "@plasma-crm/shared-types/customer": ["libs/shared/types/src/lib/customer.types.ts"],
+      "@plasma-crm/shared-types/order": ["libs/shared/types/src/lib/order.types.ts"],
+      "@plasma-crm/shared-types/product": ["libs/shared/types/src/lib/product.types.ts"],
+      "@plasma-crm/shared-types/api": ["libs/shared/types/src/lib/api.types.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

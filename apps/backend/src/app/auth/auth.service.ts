@@ -3,7 +3,8 @@ import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { randomUUID } from 'crypto';
 import { jwtConstants } from './constants';
-import { User, JwtKeys } from '@plasma-crm/shared-types';
+import { User } from '@plasma-crm/shared-types/auth';
+import { JwtKeys } from '@plasma-crm/shared-types/auth';
 
 type Token = {
   token_type: 'refresh' | 'access';

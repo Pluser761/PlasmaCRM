@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Inject, Param, Post, Put, Query } from '@nestjs/common';
-import { Order } from '@plasma-crm/shared-types';
+import { Order } from '@plasma-crm/shared-types/order';
 import { OrderService } from './order.service';
 
 @Controller('orders')

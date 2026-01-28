@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Customer } from '@plasma-crm/shared-types';
+import { Customer } from '@plasma-crm/shared-types/customer';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 import { DataTableComponent, TableColumn, TableAction } from '../../shared/components/data-table/data-table';
 import { CommonModule } from '@angular/common';
@@ -96,37 +96,8 @@ export default class Customers implements OnInit {
       error: (error) => {
         console.error('Error loading customers:', error);
         this.loading = false;
-        // For now, show mock data if API fails
-        this.loadMockData();
       }
     });
-  }
-
-  loadMockData(): void {
-    this.customers = [
-      {
-        id: 1,
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        phone: '+1-555-0123',
-        address: '123 Main St',
-        city: 'New York',
-        country: 'USA',
-        createdAt: new Date('2024-01-15'),
-        updatedAt: new Date('2024-01-15'),
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        email: 'jane.smith@example.com',
-        phone: '+1-555-0456',
-        address: '456 Oak Ave',
-        city: 'Los Angeles',
-        country: 'USA',
-        createdAt: new Date('2024-01-20'),
-        updatedAt: new Date('2024-01-20'),
-      },
-    ];
   }
 
   onCreateCustomer(): void {

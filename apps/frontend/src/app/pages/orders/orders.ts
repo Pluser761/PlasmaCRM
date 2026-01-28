@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Order } from '@plasma-crm/shared-types';
+import { Order } from '@plasma-crm/shared-types/order';
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header';
 import { DataTableComponent, TableColumn, TableAction } from '../../shared/components/data-table/data-table';
 import { CommonModule } from '@angular/common';

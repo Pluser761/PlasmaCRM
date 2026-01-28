@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Inject, Param, Post, Put } from '@nestjs/common';
-import { Customer } from '@plasma-crm/shared-types';
+import { Customer } from '@plasma-crm/shared-types/customer';
 import { CustomerService } from './customer.service';
 
 @Controller('customers')
